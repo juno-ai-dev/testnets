@@ -1,6 +1,10 @@
 # Junø - uni-7 Testnet
 
-This unincentivized testnet will start at juno `v27.0.0`.
+## Current upgrade
+
+uni-7 is scheduled to upgrade from `v29.0.0` to [`v30.0.0`](./01_V30_UPGRADE.md) at block **`16034000`** using the on-chain plan name **`v30`**. Validators must stage the v30 binary before the halt and update `minimum-gas-prices` for the new fee market.
+
+This unincentivized testnet started at juno `v27.0.0`.
 
 The faucet will be patched to have a large sum of fake USDC, usdcx.
 
