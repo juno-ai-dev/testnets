@@ -1,14 +1,14 @@
 # uni-7 v30 upgrade
 
-uni-7 will upgrade to Juno [`v30.0.0`](https://github.com/CosmosContracts/juno/releases/tag/v30.0.0) at block **`16000000`**. At the recent 2.60-second average block time, the halt is estimated for **2026-07-20 around 13:50 UTC**. The block height takes precedence over the estimate.
+uni-7 will upgrade to Juno [`v30.0.0`](https://github.com/CosmosContracts/juno/releases/tag/v30.0.0) at block **`16034000`**. At the recent 2.59-second average block time, the halt is estimated for **2026-07-21 around 13:45 UTC**. The block height takes precedence over the estimate.
 
 - Chain ID: `uni-7`
 - Current version: `v29.0.0`
 - Target version: `v30.0.0`
 - Upgrade plan name: **`v30`**
-- Upgrade height: **`16000000`**
+- Upgrade height: **`16034000`**
 - Release commit: `c0b3a8d258d52d16e5bc39a75168a99aab9d098e`
-- Explorer: <https://testnet.juno.valopers.com/blocks/16000000>
+- Explorer: <https://testnet.juno.valopers.com/blocks/16034000>
 
 This is a consensus-breaking upgrade. v30 moves to Cosmos SDK v0.53.7, wasmd v0.61.11, wasmvm v3.0.4, IBC-Go v10.6.0, and CometBFT v0.38.23. It adds the `feemarket` and `votingsnapshot` stores and deletes the `globalfee`, `crisis`, `params`, `nft`, `feeibc`, and `interchainquery` stores.
 
@@ -65,7 +65,7 @@ Confirm `version: v30.0.0` and commit `c0b3a8d258d52d16e5bc39a75168a99aab9d098e`
 
 ## Manual upgrade
 
-If Cosmovisor is not being used, wait for the chain to halt at block 16000000, then:
+If Cosmovisor is not being used, wait for the chain to halt at block 16034000, then:
 
 ```bash
 sudo systemctl stop junod
@@ -81,10 +81,10 @@ Do not replace the running v29 binary before the halt unless Cosmovisor is manag
 
 ## Post-upgrade verification
 
-Verify that the chain produces blocks beyond 16000000, then run:
+Verify that the chain produces blocks beyond 16034000, then run:
 
 ```bash
-RPC="https://rpc-uni.junonetwork.io:443"
+RPC="https://juno-testnet-rpc.cogwheel.zone"
 
 junod status --node "$RPC"
 junod query upgrade applied v30 --node "$RPC" --output json
@@ -97,8 +97,8 @@ junod query cw-hooks params --node "$RPC" --output json
 Also verify the new REST surfaces when an API endpoint is available:
 
 ```bash
-API="https://lcd-uni.junonetwork.io"
-UPGRADE_HEIGHT=16000000
+API="https://juno-testnet-api.cogwheel.zone"
+UPGRADE_HEIGHT=16034000
 DELEGATOR="<existing-juno-address>"
 
 curl -fsS "$API/juno/feemarket/v1/params" | jq
@@ -111,7 +111,7 @@ curl -fsS "$API/juno/votingsnapshot/v1/total_voting_power/$UPGRADE_HEIGHT" | jq
 
 Acceptance criteria:
 
-- the applied plan is `v30` at block 16000000;
+- the applied plan is `v30` at block 16034000;
 - validators agree on the app hash and continue producing blocks;
 - the feemarket is enabled for `ujunox` with a positive gas price;
 - cw-hooks params are readable and the failure-removal threshold is `3`;
