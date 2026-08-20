@@ -2,7 +2,7 @@
 
 ## Current upgrade
 
-uni-7 is scheduled to upgrade from `v29.0.0` to [`v30.0.0`](./01_V30_UPGRADE.md) at block **`16034000`** using the on-chain plan name **`v30`**. Validators must stage the v30 binary before the halt and update `minimum-gas-prices` for the new fee market.
+Preparation is underway for the coordinated upgrade from `v30.0.0` to [`v31.0.0`](./02_V31_UPGRADE.md) using the on-chain plan name **`v31`**. The release tag, commit, height, and UTC estimate remain pending; operators must not schedule or stage the upgrade from the draft guide.
 
 This unincentivized testnet started at juno `v27.0.0`.
 
