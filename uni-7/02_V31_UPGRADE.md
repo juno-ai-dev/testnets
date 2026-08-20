@@ -15,7 +15,7 @@ uni-7 will upgrade from Juno `v30.0.0` to `v31.0.0` after the release candidate 
 
 This is a coordinated consensus upgrade. The current v31 candidate keeps the v30 store architecture and declares no store additions or deletions. Its upgrade handler migrates module versions and initializes the default Clock and CW Hooks contract caps when legacy state contains zero values.
 
-The current candidate moves to Cosmos SDK v0.53.8, wasmd v0.61.14, wasmvm v3.0.7, IBC-Go v10.7.0, and CometBFT v0.38.25. It also contains FeePay, feegrant, wallet gas-simulation, transaction gas-limit, export/import, state-sync, and release-pipeline fixes. These details must be rechecked against the immutable release tag before this guide is submitted upstream.
+The current candidate requires Go 1.25.10 and moves to Cosmos SDK v0.53.8, wasmd v0.61.14, wasmvm v3.0.7, IBC-Go v10.7.0, and CometBFT v0.38.25. It also contains FeePay, feegrant, wallet gas-simulation, transaction gas-limit, export/import, state-sync, and release-pipeline fixes. These details must be rechecked against the immutable release tag before this guide is submitted upstream.
 
 ## Release gates
 
@@ -98,7 +98,7 @@ Acceptance criteria:
 
 - the applied plan is `v31` at the selected height;
 - validators agree on the app hash and continue producing blocks;
-- Clock and CW Hooks contract caps are non-zero after migration;
+- Clock and CW Hooks contract caps are `100` after legacy-zero migration;
 - a normal wallet transfer simulates and delivers with adequate gas;
 - feegrant and FeePay transactions simulate and deliver with correct sender accounting;
 - IBC relayers can relay and update clients using fee grants;
